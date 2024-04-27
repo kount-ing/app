@@ -3,6 +3,19 @@
 </script>
 
 <div class="app">
+	<nav class="w-full fixed h-24">
+		<div class="flex items-center justify-between h-full w-full mx-auto container px-4 md:px-0">
+			<h1 class="!text-2xl font-semibold"><a href="/">kount.ing</a></h1>
+			<div class="flex justify-center items-center gap-4 opacity-70">
+				<button class="text-base px-2 py-2 underline rounded-md cursor-not-allowed">Log In</button>
+				<p>or</p>
+				<button
+					class=" cursor-not-allowed text-base px-4 py-2 border-2 border-primary bg-primary text-white rounded-md"
+					>Sign Up</button
+				>
+			</div>
+		</div>
+	</nav>
 	<main>
 		<slot />
 	</main>
@@ -34,10 +47,6 @@
 		justify-content: center;
 		align-items: center;
 		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
 	}
 
 	@media (min-width: 480px) {
