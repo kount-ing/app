@@ -22,7 +22,7 @@
 	<meta name="description" content="Kount, kount, and kount..." />
 </svelte:head>
 
-<SuperDebug data={$form} />
+<!-- <SuperDebug data={$form} /> -->
 <section class="w-full">
 	<form method="POST" use:enhance>
 		<FormInput

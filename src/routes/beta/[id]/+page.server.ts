@@ -2,10 +2,11 @@ import { getFirebaseAdmin } from '$lib/firebase/firebase.admin';
 import admin from 'firebase-admin';
 
 export async function load({ params }) {
+	console.log(params.id);
 	let test = await getFirebaseAdmin()
 		.firestore()
 		.collection('kounts')
-		.where(admin.firestore.FieldPath.documentId(), '==', 'TFgrxrBj57Y5x02ElGI0')
+		.where(admin.firestore.FieldPath.documentId(), '==', params.id)
 		.get();
 
 	let data = {};
