@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { spring } from 'svelte/motion';
+	import { FieldValue, doc, getDoc, updateDoc } from 'firebase/firestore';
+	import { firestore } from '$lib/firebase/firebase.app';
 
 	export let count: number | 0;
+	export let id: string;
 
 	const displayed_count = spring();
 	$: displayed_count.set(count);
@@ -11,10 +14,18 @@
 		// handle negative numbers
 		return ((n % m) + m) % m;
 	}
+
+	async function countUp(event: any) {
+		await updateDoc(doc(firestore, `kounts/${id}`), { count: count + 1 });
+	}
+
+	async function countDown(event: any) {
+		await updateDoc(doc(firestore, `kounts/${id}`), { count: count + 1 });
+	}
 </script>
 
 <div class="counter">
-	<button on:click={() => (count -= 1)} aria-label="Decrease the counter by one">
+	<button on:click={countDown} aria-label="Decrease the counter by one">
 		<svg aria-hidden="true" viewBox="0 0 1 1">
 			<path d="M0,0.5 L1,0.5" />
 		</svg>
@@ -27,7 +38,7 @@
 		</div>
 	</div>
 
-	<button on:click={() => (count += 1)} aria-label="Increase the counter by one">
+	<button on:click={countUp} aria-label="Increase the counter by one">
 		<svg aria-hidden="true" viewBox="0 0 1 1">
 			<path d="M0,0.5 L1,0.5 M0.5,0 L0.5,1" />
 		</svg>
@@ -83,7 +94,6 @@
 		width: 100%;
 		height: 100%;
 		font-weight: 400;
-		color: var(--color-theme-1);
 		font-size: 4rem;
 		align-items: center;
 		justify-content: center;
