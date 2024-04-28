@@ -19,6 +19,8 @@ export const actions = {
 		let formData = await request.formData();
 		const form = await superValidate(formData, zod(schema));
 
+		form.data.link = `${form.data.link}-${String(Date.now()).slice(5, 10)}`;
+
 		if (!form.valid) {
 			return fail(400, form);
 		}
