@@ -5,8 +5,18 @@
 	import schema from './schema.js';
 	import { createId } from '@paralleldrive/cuid2';
 	import { redirect } from '@sveltejs/kit';
+	import { userData } from '../stores';
+
+	let greeting: string = 'hi! what do you want to';
+
+	$: if ($userData) {
+		greeting = greeting?.replace('!', ` ${$userData.displayName}!`);
+	} else {
+		greeting = greeting;
+	}
 
 	export let data;
+
 	let loading: boolean = false;
 
 	const { form, enhance, errors, allErrors } = superForm(data.form, {
@@ -30,7 +40,8 @@
 <section class="w-full">
 	<h1 class="text-4xl md:text-5xl font-semibold mb-8">kount.ing</h1>
 	<p class="text-xl md:text-2xl tracking-wider text-gray-700 font-light mb-8">
-		what do you want to <span class="tracking-normal font-semibold text-primary">kount</span>?
+		{greeting}
+		<span class="tracking-normal font-semibold text-primary">kount</span>?
 	</p>
 	<form method="POST" class="w-full flex flex-col items-center justify-center gap-4" use:enhance>
 		<div class="flex w-full md:w-4/5 lg:w-3/5 border-2 h-12 mx-auto rounded-md text-sm md:text-lg">

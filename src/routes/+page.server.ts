@@ -19,8 +19,6 @@ export const actions = {
 		let formData = await request.formData();
 		const form = await superValidate(formData, zod(schema));
 
-		console.log(form.data, form.errors);
-
 		if (!form.valid) {
 			return fail(400, form);
 		}

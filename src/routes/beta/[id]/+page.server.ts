@@ -2,7 +2,6 @@ import { getFirebaseAdmin } from '$lib/firebase/firebase.admin';
 import admin from 'firebase-admin';
 
 export async function load({ params }) {
-	console.log(params.id);
 	let test = await getFirebaseAdmin()
 		.firestore()
 		.collection('kounts')
