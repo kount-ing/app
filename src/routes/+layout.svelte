@@ -1,12 +1,7 @@
 <script lang="ts">
 	import './styles.scss';
 	import { firebaseApp } from '$lib/firebase/firebase.app';
-	import {
-		getAuth,
-		GoogleAuthProvider,
-		signInWithRedirect,
-		getRedirectResult
-	} from 'firebase/auth';
+	import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 	import { onMount } from 'svelte';
 	import { userData } from '../stores';
 
@@ -32,8 +27,7 @@
 		}
 	};
 
-	const verifyLogin = async () => {
-		const result = await getRedirectResult(auth);
+	const verifyLogin = async (result) => {
 		const user = result?.user;
 
 		if (user) {
@@ -57,7 +51,6 @@
 
 	onMount(async () => {
 		checkSession();
-		verifyLogin();
 	});
 </script>
 
@@ -68,7 +61,7 @@
 			<h1 class="!text-2xl font-semibold"><a href="/">kount.ing</a></h1>
 			<div class="flex justify-center items-center gap-8 opacity-70">
 				{#if !!isAuthenticated && !!currentUID}
-					<button class="text-base"> my kounts </button>
+					<button class="text-base"> my kounts</button>
 					<button
 						on:click={() => {
 							logout();
@@ -80,8 +73,9 @@
 
 				{#if !isAuthenticated || !currentUID}
 					<button
-						on:click={() => {
-							signInWithRedirect(auth, provider);
+						on:click={async () => {
+							const result = await signInWithPopup(auth, provider);
+							verifyLogin(result);
 						}}
 						class="text-base px-4 py-2 border-2 border-primary bg-primary text-white rounded-md"
 						>Log In</button
