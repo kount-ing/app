@@ -43,6 +43,7 @@
 	"type": "module",
 	"dependencies": {
 		"@paralleldrive/cuid2": "^2.2.2",
+		"firebaseui": "^6.1.0",
 		"sveltekit-superforms": "^2.12.6"
 	}
 }

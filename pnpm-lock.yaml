@@ -11,6 +11,9 @@ importers:
       '@paralleldrive/cuid2':
         specifier: ^2.2.2
         version: 2.2.2
+      firebaseui:
+        specifier: ^6.1.0
+        version: 6.1.0(firebase@10.11.1)
       sveltekit-superforms:
         specifier: ^2.12.6
         version: 2.12.6(@sveltejs/kit@2.5.7(@sveltejs/vite-plugin-svelte@3.1.0(svelte@4.2.15)(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)))(svelte@4.2.15)(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)))(@types/json-schema@7.0.15)(esbuild-runner@2.2.2(esbuild@0.20.2))(esbuild@0.20.2)(svelte@4.2.15)
@@ -1101,6 +1104,9 @@ packages:
   devalue@5.0.0:
     resolution: {integrity: sha512-gO+/OMXF7488D+u3ue+G7Y4AA3ZmUnB3eHJXmBTgNHvr4ZNzl36A0ZtG+XCRNYCkYx/bFmw4qtkoFLa+wSrwAA==}
 
+  dialog-polyfill@0.4.10:
+    resolution: {integrity: sha512-j5yGMkP8T00UFgyO+78OxiN5vC5dzRQF3BEio+LhNvDbyfxWBsi3sfPArDm54VloaJwy2hm3erEiDWqHRC8rzw==}
+
   didyoumean@1.2.2:
     resolution: {integrity: sha512-gxtyfqMg7GKyhQmb056K7M3xszy/myH8w+B4RT+QXBQsvAOdc3XymqDDPHx1BgPgsdAA5SIifona89YtRATDzw==}
 
@@ -1283,6 +1289,11 @@ packages:
 
   firebase@10.11.1:
     resolution: {integrity: sha512-7T6FJJb4PBi6IYR1212/a0djjal6nGph9AQazobWaO75+4zeyEvBDlsofWLEawVAEN2PCp8qXvFe4pMdIB5U1w==}
+
+  firebaseui@6.1.0:
+    resolution: {integrity: sha512-5WiVYVxPGMANuZKxg6KLyU1tyqIsbqf/59Zm4HrdFYwPtM5lxxB0THvgaIk4ix+hCgF0qmY89sKiktcifKzGIA==}
+    peerDependencies:
+      firebase: ^9.1.3 || ^10.0.0
 
   flat-cache@3.2.0:
     resolution: {integrity: sha512-CYcENa+FtcUKLmhhqyctpclsq7QF38pKjZHsGNiSQF5r4FtoKDWabFDl3hzaEQMvT1LHEysw5twgLvpYYb4vbw==}
@@ -1638,6 +1649,10 @@ packages:
 
   magic-string@0.30.10:
     resolution: {integrity: sha512-iIRwTIf0QKV3UAnYK4PU8uiEc4SRh5jX0mwpIwETPpHdhVM4f53RSwS/vXvN1JhGX+Cs7B8qIq3d6AH49O5fAQ==}
+
+  material-design-lite@1.3.0:
+    resolution: {integrity: sha512-ao76b0bqSTKcEMt7Pui+J/S3eVF0b3GWfuKUwfe2lP5DKlLZOwBq37e0/bXEzxrw7/SuHAuYAdoCwY6mAYhrsg==}
+    engines: {node: '>=0.12.0'}
 
   mdn-data@2.0.30:
     resolution: {integrity: sha512-GaqWWShW4kv/G9IEucWScBx9G1/vsFZZJUO+tD26M8J8z3Kw5RDQjaoZe03YAClgeS/SWPOcb4nkFBTEi5DUEA==}
@@ -3615,6 +3630,8 @@ snapshots:
 
   devalue@5.0.0: {}
 
+  dialog-polyfill@0.4.10: {}
+
   didyoumean@1.2.2: {}
 
   diff-sequences@29.6.3: {}
@@ -3909,6 +3926,12 @@ snapshots:
       '@firebase/util': 1.9.5
     transitivePeerDependencies:
       - '@react-native-async-storage/async-storage'
+
+  firebaseui@6.1.0(firebase@10.11.1):
+    dependencies:
+      dialog-polyfill: 0.4.10
+      firebase: 10.11.1
+      material-design-lite: 1.3.0
 
   flat-cache@3.2.0:
     dependencies:
@@ -4309,6 +4332,8 @@ snapshots:
   magic-string@0.30.10:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  material-design-lite@1.3.0: {}
 
   mdn-data@2.0.30: {}
 
