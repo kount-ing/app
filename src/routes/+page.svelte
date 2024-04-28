@@ -4,8 +4,8 @@
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import schema from './schema.js';
 	import { createId } from '@paralleldrive/cuid2';
-	import { redirect } from '@sveltejs/kit';
 	import { userData } from '../stores';
+	import slugify from 'slugify';
 
 	let greeting: string = 'hi! what do you want to';
 
@@ -53,6 +53,9 @@
 				placeholder="I relapsed"
 				type="text"
 				class="px-4 bg-transparent w-4/5"
+				on:change={() => {
+					$form.link = slugify($form.phrase).toLowerCase();
+				}}
 				bind:value={$form.phrase}
 			/>
 			<input type="hidden" bind:value={$form.link} name="link" />

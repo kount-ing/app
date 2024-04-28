@@ -5,5 +5,11 @@ export default defineConfig({
 	plugins: [sveltekit()],
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
+	},
+	build: {
+		rollupOptions: {
+			// cf. https://rollupjs.org/configuration-options/#external
+			external: ['@resvg/resvg-js', 'css-tree']
+		}
 	}
 });

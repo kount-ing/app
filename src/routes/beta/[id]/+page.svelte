@@ -3,6 +3,7 @@
 	import { doc, onSnapshot } from 'firebase/firestore';
 	import { firestore } from '$lib/firebase/firebase.app';
 	import { page } from '$app/stores';
+	import { MetaTags } from 'svelte-meta-tags';
 
 	export let data: any;
 
@@ -12,7 +13,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>kount | {data.phrase}</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
@@ -24,6 +25,19 @@
 
 	<Counter count={data.count} id={$page.params.id} />
 </section>
+
+<MetaTags
+	openGraph={{
+		images: [
+			{
+				url: `https://kount.ing/beta/${$page.params.id}/opengraph-image`,
+				width: 800,
+				height: 600,
+				alt: 'Open Graph Image'
+			}
+		]
+	}}
+/>
 
 <style>
 	section {
