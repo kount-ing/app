@@ -1,7 +1,7 @@
 <script lang="ts">
 	import './styles.scss';
 	import { firebaseApp } from '$lib/firebase/firebase.app';
-	import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+	import { getAuth, GoogleAuthProvider, signInWithPopup, type UserCredential } from 'firebase/auth';
 	import { onMount } from 'svelte';
 	import { userData } from '../stores';
 	import Analytics from '$lib/analytics.svelte';
@@ -28,7 +28,7 @@
 		}
 	};
 
-	const verifyLogin = async (result) => {
+	const verifyLogin = async (result: UserCredential) => {
 		const user = result?.user;
 
 		if (user) {
@@ -64,7 +64,8 @@
 			<h1 class="!text-2xl font-semibold"><a href="/">kount.ing</a></h1>
 			<div class="flex justify-center items-center gap-8 opacity-70">
 				{#if !!isAuthenticated && !!currentUID}
-					<button class="text-base"> my kounts</button>
+					<a href="/my-kounts/">my kounts</a>
+
 					<button
 						on:click={() => {
 							logout();
