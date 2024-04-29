@@ -31,8 +31,8 @@
 		images: [
 			{
 				url: `https://kount.ing/beta/${$page.params.id}/opengraph-image`,
-				width: 1200,
-				height: 630,
+				width: 800,
+				height: 600,
 				alt: 'Open Graph Image'
 			}
 		]

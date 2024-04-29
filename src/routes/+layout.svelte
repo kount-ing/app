@@ -4,6 +4,7 @@
 	import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 	import { onMount } from 'svelte';
 	import { userData } from '../stores';
+	import Analytics from '$lib/analytics.svelte';
 
 	const provider = new GoogleAuthProvider();
 	const auth = getAuth(firebaseApp);
@@ -53,6 +54,8 @@
 		checkSession();
 	});
 </script>
+
+<Analytics />
 
 <div class="app">
 	<div id="firebaseui-auth-container"></div>
