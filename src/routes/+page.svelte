@@ -59,6 +59,7 @@
 				bind:value={$form.phrase}
 			/>
 			<input type="hidden" bind:value={$form.link} name="link" />
+			<input type="hidden" value={$userData?.id} name="uid" />
 		</div>
 		<div class="h-4 mb-8">
 			{#if Array.isArray($errors.phrase)}

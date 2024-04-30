@@ -12,7 +12,8 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 	const userDocument = {
 		uid: data.uid,
 		email: data.email,
-		displayName: data.displayName
+		displayName: data.displayName,
+		username: data.displayName.replace(/\s/g, '').toLowerCase()
 	};
 
 	// Create user document

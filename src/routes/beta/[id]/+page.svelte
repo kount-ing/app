@@ -8,7 +8,7 @@
 	export let data: any;
 
 	onSnapshot(doc(firestore, `kounts/${$page.params.id}`), (snapshot) => {
-		data = { ...snapshot.data() };
+		data = { ...data, ...snapshot.data() };
 	});
 </script>
 
@@ -18,12 +18,17 @@
 </svelte:head>
 
 <section>
-	<h2 class="text-2xl text-gray-700 mb-8">
+	<h2 class="text-2xl text-gray-700 mb-2">
 		<span class="text-primary font-medium">{data.type}</span>
 		{data.phrase}
 	</h2>
+	{#if data.username}
+		<p class="text-gray-600">@{data.username}</p>
+	{/if}
 
-	<Counter count={data.count} id={$page.params.id} />
+	<div class="mt-8">
+		<Counter count={data.count} id={$page.params.id} />
+	</div>
 </section>
 
 <MetaTags
